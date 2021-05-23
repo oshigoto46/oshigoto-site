@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
       {/* <header className="App-header"> */}
-        <Header></Header>
-        <Tabs   selectedIndex={tabIndex} onSelect={(tabIndex) => setTabIndex(tabIndex)}>
+       <Header></Header>
+       <Tabs   selectedIndex={tabIndex} onSelect={(tabIndex) => setTabIndex(tabIndex)}>
         <TabList>
           <Tab>Our Company </Tab>
           <Tab>XXX Members</Tab>

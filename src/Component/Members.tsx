@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import {Button,Paper} from "@material-ui/core";
+import {Photos} from "./Photos/Photos";
 
 export const  Members: React.FunctionComponent = () => {
 
@@ -22,6 +23,7 @@ export const  Members: React.FunctionComponent = () => {
             //css={styles.card}
             elevation={3}
         ></Paper>
+        <Photos></Photos>
         <Button style={{ color: "#FFFFFF" }} />{' '}
         </div>
     )
