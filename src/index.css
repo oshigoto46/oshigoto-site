@@ -25,3 +25,9 @@ code {
 	align-items: center;
 	border: solid thin #333;
 }
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
