@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState, useRef } from "react";
 import Introduction from "./Component/Introduction"
-import Members from "./Component/Members"
+import {Members} from "./Component/Members"
+import Header from "./Component/Header"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Header></Header>
         <Tabs   selectedIndex={tabIndex} onSelect={(tabIndex) => setTabIndex(tabIndex)}>
         <TabList>
           <Tab>Our Agency's </Tab>

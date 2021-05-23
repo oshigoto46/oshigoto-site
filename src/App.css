@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.simple_square_btn2 {
+	display: block;
+	position: relative;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+	color: #1B1B1B;
+	background: #fff;
+	border:1px solid #1B1B1B;
+}

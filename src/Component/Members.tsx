@@ -1,11 +1,30 @@
-import React, { Component } from "react";
+import React, { FunctionComponent } from "react";
+import {Button,Paper} from "@material-ui/core";
 
-export default class Members extends React.Component{
+export const  Members: React.FunctionComponent = () => {
+
+    let buttonStyle = {
+        minWidth: 64, // 数値は"64px"のように、pxとして扱われます
+        lineHeight: "32px",
+        borderRadius: 4,
+        border: "none",
+        padding: "0 40px",
+        color: "#fff",
+        background: "#639"
+   };
  
-   render(){
+  
     return (
-        <div>Members</div>
+        // <div className="App-header"> Members
+        <div > Members
+        <Paper
+            style={buttonStyle}
+            //css={styles.card}
+            elevation={3}
+        ></Paper>
+        <Button style={{ color: "#FFFFFF" }} />{' '}
+        </div>
     )
-   }
+   
 
 }
