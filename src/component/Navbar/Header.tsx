@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Drawer, Button} from 'antd';
 import RightMenu from '../Right-Menu/RightMenu'
+import {UploadModal} from "./UploadModal";
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -15,6 +16,8 @@ const Header: React.FC = () => {
     const onClose = (): void => {
 		setIsDrawerMenuVisible(false);
 	  };
+	const [open, setOpen] = useState(true);
+	const handleClose = () => setOpen(false);
 
 	return (
 		<nav className='header' data-test='navbar'>
@@ -24,8 +27,9 @@ const Header: React.FC = () => {
 			 </div>
 			 <div className='menu__container'>
                 <div className='menu_rigth'>
-				    <RightMenu mode='horizontal' ata-test='menu-outside-drawer' />
+				    <RightMenu mode='inline' ata-test='menu-outside-drawer' />
 				</div>
+				{open && <UploadModal open={open} handleClose={handleClose} />}
 				<Button
 					data-test='button-show-drawer'
 					className='menu__mobile-button'
