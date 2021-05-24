@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Drawer, Button} from 'antd';
 import RightMenu from '../Right-Menu/RightMenu'
 import {UploadModal} from "./UploadModal";
+import MenuIcon from '@material-ui/icons/Menu';
+//import HomeSharpIcon from "@material-ui/icons/HomeSharp";
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -25,6 +27,7 @@ const Header: React.FC = () => {
 				 {/* <Link></Link> */}
 				 <span>Firegram</span>
 			 </div>
+			 <MenuIcon />
 			 <div className='menu__container'>
                 <div className='menu_rigth'>
 				    <RightMenu mode='inline' ata-test='menu-outside-drawer' />
