@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import {Button,Paper} from "@material-ui/core";
-import {Photos} from "./Photos/Photos";
+import {Photos} from "../Photos/Photos";
 
 export const  Members: React.FunctionComponent = () => {
 

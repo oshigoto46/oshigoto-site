@@ -48,3 +48,31 @@
 	background: #fff;
 	border:1px solid #1B1B1B;
 }
+
+@media (max-width: 767px) {
+  .menu {
+    height: 51px;
+  }
+
+  /*TODO: Replace float using flex*/
+  .menu__mobile-button {
+    float: left;
+    display: inline-block !important;
+  }
+
+  .menu__mobile-button Icon {
+    height: 32px;
+    width: 32px;
+  }
+
+  .menu_rigth,
+  .menu__logo {
+    display: none;
+  }
+
+  .menu__container .ant-menu-item,
+  .menu__container .ant-menu-submenu-title {
+    padding: 1px 20px;
+  }
+
+}

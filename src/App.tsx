@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import { useEffect, useState, useRef } from "react";
-import Introduction from "./Component/Introduction"
-import {Members} from "./Component/Members"
-import {Prices}  from "./Component/Prices"
-import Header from "./Component/Header"
+import Introduction from "./component/Introduction/Introduction"
+import {Members} from "./component/Members/Members"
+import {Prices}  from "./component/Prices/Prices"
+import Header from "./component/Navbar/Header"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 

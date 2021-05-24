@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Drawer, Button} from 'antd';
+import RightMenu from '../Right-Menu/RightMenu'
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
+
 	const [isDrawerMenuVisible, setIsDrawerMenuVisible] = useState<boolean>(
 		false
 	  );
@@ -15,13 +17,14 @@ const Header: React.FC = () => {
 	  };
 
 	return (
-		<nav className='menu' data-test='navbar'>
+		<nav className='header' data-test='navbar'>
 			 <div className='menu__logo'>
 				 {/* <Link></Link> */}
+				 <span>Firegram</span>
 			 </div>
 			 <div className='menu__container'>
                 <div className='menu_rigth'>
-				    {/* <RightMenu mode='horizontal' ata-test='menu-outside-drawer' /> */}
+				    <RightMenu mode='horizontal' ata-test='menu-outside-drawer' />
 				</div>
 				<Button
 					data-test='button-show-drawer'
@@ -29,6 +32,8 @@ const Header: React.FC = () => {
 					type='primary'
 					onClick={showDrawer}
 					>
+						button button
+					{/* <Icon type='align-left' /> */}
 				</Button>
 				<Drawer
 					data-test='drawer-menu'
@@ -40,10 +45,7 @@ const Header: React.FC = () => {
 					visible={isDrawerMenuVisible}
 					>
 				</Drawer>
-			
-				<div className='header'>
-					<h3>Marriage Agency</h3>
-				</div>
+	
 			 </div>
 		</nav>
 	);
