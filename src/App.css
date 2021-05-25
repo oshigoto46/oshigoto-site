@@ -22,6 +22,27 @@
   align-items: center;
 } */
 
+.modal__container .modal__body {
+  position: relative;
+  background: #fff;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+@media screen and (max-width: 500px) {
+  .modal__container .modal__body {
+    padding: 1.4rem;
+    border-radius: 0.7rem;
+  }
+}
+
+.modal__container .modal__body form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 
 .App-header {
   background-color: #282c34;
