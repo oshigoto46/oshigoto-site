@@ -1,8 +1,13 @@
 import React, { FunctionComponent } from "react";
 import {Button,Paper} from "@material-ui/core";
-import {Photos} from "../Photos/Photos";
+import {UploadModal} from "../Photos/UploadModal";
+import { useState } from "react";
 
 export const  Members: React.FunctionComponent = () => {
+
+    const [open, setOpen] = useState(false);
+    const handleClose = () => setOpen(false);
+
 
     let buttonStyle = {
         minWidth: 64, // 数値は"64px"のように、pxとして扱われます
@@ -23,7 +28,7 @@ export const  Members: React.FunctionComponent = () => {
             //css={styles.card}
             elevation={3}
         ></Paper>
-        <Photos></Photos>
+        {open && <UploadModal open={open} handleClose={handleClose} />}
         <Button style={{ color: "#FFFFFF" }} />{' '}
         </div>
     )

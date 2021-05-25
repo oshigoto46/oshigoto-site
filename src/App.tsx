@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { useEffect, useState, useRef } from "react";
 import Introduction from "./component/Introduction/Introduction"
-import {Members} from "./component/Members/Members"
+import {Photo} from "./component/Photos/Photo"
 import {Prices}  from "./component/Prices/Prices"
 import Header from "./component/Navbar/Header"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -21,7 +21,7 @@ function App() {
           <Tab>Prices</Tab>
         </TabList>
         <TabPanel>  <Introduction> </Introduction> </TabPanel>
-        <TabPanel>  <Members></Members>  </TabPanel>
+        <TabPanel>  <Photo></Photo>  </TabPanel>
         <TabPanel>  <Prices></Prices>  </TabPanel>
       </Tabs>
       {/* </header> */}

@@ -7,7 +7,6 @@ export  const UploadModal = ({ open, handleClose }) => {
         <Modal open={open} onClose={handleClose}>
             <div className="modal__container">
                 <div className="modal__body">
-                
                         Open !! Open !　! Open !! Open !!
                         Open !! Open !　! Open !! Open !!　
                         Open !! Open !　! Open !! Open !!
