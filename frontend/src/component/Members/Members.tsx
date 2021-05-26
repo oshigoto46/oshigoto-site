@@ -28,7 +28,7 @@ export const  Members: React.FunctionComponent = () => {
             //css={styles.card}
             elevation={3}
         ></Paper>
-        {open && <UploadModal open={open} handleClose={handleClose} />}
+        {open && <UploadModal open2={open} handleClose={handleClose} />}
         <Button style={{ color: "#FFFFFF" }} />{' '}
         </div>
     )

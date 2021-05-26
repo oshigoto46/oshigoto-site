@@ -8,24 +8,24 @@ export const Photo = () => {
 	const likeFunction = () => {
 		setLike((like) => !like);
 	};
-	const [open , setOpen]  = useState<boolean>(false);
+	const [open , setOpen]  = useState<boolean>(true);
 	// どう書くのがいいのか検討
 	const handleStateChange = ():void => setOpen(true);
 	const handleClose       = ():void => setOpen(false);
 
 	return (
 		<nav className='photo'>
-			{open && <UploadModal open={open}  handleClose={handleClose} />}
-			<IconButton
+			{open && <UploadModal open2={open}  handleClose={handleClose} />}
+			{/* <IconButton
 				edge="start"
 				// className={classes.menuButton}
 				onClick={() => setOpen(true)}
 				color="inherit"
 				aria-label="menu"
-			>
-			　　<MenuIcon />
-			     upload
-			</IconButton>
+			> */}
+			{/* 　　<MenuIcon />
+			     upload */}
+			{/* </IconButton> */}
 		</nav>
 		// <div className='photo'>
 		// 	<img src={photo.url} width={"100%"} alt={`Thumbnail: ${photo.id}`} />
