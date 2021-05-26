@@ -8,3 +8,6 @@ this is my blog-site
 
 * API
   * [Golang] (go.md)
+
+## License
+MIT License

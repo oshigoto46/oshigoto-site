@@ -16,16 +16,6 @@ export const Photo = () => {
 	return (
 		<nav className='photo'>
 			{open && <UploadModal open2={open}  handleClose={handleClose} />}
-			{/* <IconButton
-				edge="start"
-				// className={classes.menuButton}
-				onClick={() => setOpen(true)}
-				color="inherit"
-				aria-label="menu"
-			> */}
-			{/* 　　<MenuIcon />
-			     upload */}
-			{/* </IconButton> */}
 		</nav>
 		// <div className='photo'>
 		// 	<img src={photo.url} width={"100%"} alt={`Thumbnail: ${photo.id}`} />

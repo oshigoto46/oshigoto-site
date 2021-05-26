@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import Modal from "@material-ui/core/Modal";
 import { DropzoneDialog } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 export  const UploadModal = ({ open2, handleClose }) => {
     const [open, setOpen] = useState(false);
