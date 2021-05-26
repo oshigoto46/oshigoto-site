@@ -14,7 +14,7 @@ func main(){
 	
 	// var photosFunc = fmt.Print("Hello world!");
 	router.Route("/api/v1", func(subRouter chi.Router) {
-		fmt.Print("Hello world!")
+		//fmt.Print("Hello world!")
 		subRouter.Get("/photos", photos);
 	})
 	// router.Route("/v1/api", func(router,chi.Router)){
