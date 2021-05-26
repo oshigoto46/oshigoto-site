@@ -4,6 +4,9 @@ import { DropzoneDialog } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
+
+
+
 export  const UploadModal = ({ open2, handleClose }) => {
     const [open, setOpen] = useState(false);
     //const handleStateChange = ():void => setOpen(true);
@@ -20,6 +23,13 @@ export  const UploadModal = ({ open2, handleClose }) => {
                     open={open}
                     onClose={() => setOpen(false)}
                     onSave={(files) => {
+                    //   axios.defaults.baseURL = 'http://52.69.185.201:3030';
+                    //   axios.defaults.headers.common['Content-Type'] = 'application/json;charset=utf-8';
+                    //   axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+                      axios.get(`http://52.69.185.201:3030/api/v1/photos`)
+                        .then(res => {
+                         console.log(res.data);
+                        })
                     console.log('Files:', files);
                     setOpen(false);
                     }}
