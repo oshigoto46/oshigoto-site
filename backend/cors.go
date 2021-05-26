@@ -1,4 +1,4 @@
-package router
+package myrouter
 
 import (
 	"github.com/go-chi/cors"
