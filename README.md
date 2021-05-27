@@ -7,7 +7,7 @@ this is my blog-site
 2. `backend **`
 
 * API
-  * [Golang] (doc/go.md)
+  * [Golang](doc/go.md)
 
 ## License
 MIT License
