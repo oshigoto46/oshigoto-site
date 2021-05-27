@@ -5,14 +5,26 @@ import (
 	"net/http"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
-	"launchpad.net/goamz/aws"
-	"launchpad.net/goamz/s3"
+	"bytes"
+	"io/ioutil"
+	"github.com/aws/aws-sdk-go/aws"
+	//"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/aws/aws-sdk-go/aws/session"
+	//"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	// "database/sql"
 	// "log"
 	// _ "github.com/go-sql-driver/mysql"
 	// "github.com/kntkymt/discord_clone_server/server/model/db"
 	// "gopkg.in/gorp.v2"
 )
+
+type S3Store struct {
+	Bucket     string
+	Uploader   *s3manager.Uploader
+	Downloader *s3manager.Downloader
+}
+
 
 var Cors = cors.Handler(cors.Options{
 	AllowedOrigins:   []string{"*"},
@@ -22,28 +34,6 @@ var Cors = cors.Handler(cors.Options{
 	AllowCredentials: true,
 	MaxAge:           300,
 })
-
-// type DBManager struct {
-// 	DBMap *gorp.DbMap
-// }
-
-// //mysql -u root  -h 127.0.0.1 -P 3307 -pP@ssw0rd
-
-// func CreateManager(user string, password string) *DBManager {
-// 	var source = user + ":" + password + "@tcp(localhost:3307)/photos?parseTime=true"
-// 	var db, error = sql.Open("mysql", source)
-// 	if error != nil {
-// 		log.Fatal("error connecting to database:", error)
-// 	}
-
-// 	var gorpDialect = gorp.MySQLDialect{}
-// 	var dbMap = &gorp.DbMap{Db: db, Dialect: gorpDialect}
-
-// 	var manager = &DBManager{DBMap: dbMap}
-// 	manager.setup()
-
-// 	return manager
-// }
 
 var router = chi.NewRouter()
 
@@ -59,30 +49,70 @@ func Api(){
 	fmt.Print("\n === api end ====  \n");
 }
 
+
+func NewS3Store(bucket, region string) (*S3Store, error) {
+	s := new(S3Store)
+	//bucket   = "euromarriage-agency-2021-05-23"
+	s.Bucket = bucket
+
+	sess, err := session.NewSession(&aws.Config{
+			Region: aws.String(region),
+	})
+	if err != nil {
+			return nil, err
+	}
+
+	s.Uploader = s3manager.NewUploader(sess)
+	s.Downloader = s3manager.NewDownloader(sess)
+
+	return s, nil
+}
+
+
+func (s *S3Store) Set(key string, body []byte) (err error) {
+	params := &s3manager.UploadInput{
+			Bucket: aws.String(s.Bucket),
+			Key:    aws.String(key),
+			Body:   bytes.NewReader(body),
+	}
+	_, err = s.Uploader.Upload(params)
+	return
+}
+
 func photosPost(writer http.ResponseWriter, request *http.Request){
 
-	bucketName := "euromarriage-agency-2021-05-23"
-	auth, err := aws.EnvAuth()
-	if err != nil {
-		panic(err.Error())
-	}
-		// Open Bucket
-	s := s3.New(auth, aws.APNortheast)
-	bucket := s.Bucket(bucketName)
-	
-	fmt.Print("=======\n")
-	fmt.Print(bucketName)
-	fmt.Print(request.Body)
-	fmt.Print("=======\n")
-		
-	data := []byte("Hello, Goamz!!")
-	err = bucket.Put("sample2.txt", data, "text/plain", s3.BucketOwnerFull)
-	//err = bucket.Put(request.Body.name, request.Body.data, "text/plain", s3.BucketOwnerFull)
-	if err != nil {
-			panic(err.Error())
-	}
+	body, err := ioutil.ReadAll(request.Body)
+	newS3Store,err    := NewS3Store("euromarriage-agency-2021-05-23","ap-northeast-1")
+	newS3Store.Set("hoge", body)
 
-	fmt.Print("\nphotos")
+	if err != nil {
+		
+    }
+	
+	//s  := Set("hoge",request.Body)
+	
+	// bucketName := "euromarriage-agency-2021-05-23"
+	// auth, err := aws.EnvAuth()
+	// if err != nil {
+	// 	panic(err.Error())
+	// }
+	// 	// Open Bucket
+	// s := s3.New(auth, aws.APNortheast)
+	// bucket := s.Bucket(bucketName)
+	
+	// fmt.Print("=======\n")
+	// fmt.Print(bucketName)
+	// fmt.Print(request.Body)
+	// fmt.Print("=======\n")
+		
+	// data := []byte("Hello, Goamz!!")
+	// err = bucket.Put("sample2.txt", data, "text/plain", s3.BucketOwnerFull)
+	// //err = bucket.Put(request.Body.name, request.Body.data, "text/plain", s3.BucketOwnerFull)
+	// if err != nil {
+	// 		panic(err.Error())
+	// }
+
+	// fmt.Print("\nphotos")
 }
 
 func main(){
