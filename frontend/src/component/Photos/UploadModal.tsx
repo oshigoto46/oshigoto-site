@@ -8,8 +8,26 @@ import axios from 'axios';
 
 
 export  const UploadModal = ({ open2, handleClose }) => {
+
     const [open, setOpen] = useState(false);
-    //const handleStateChange = ():void => setOpen(true);
+    const [files, setFiles] = useState([]as any);
+
+    let formData = new FormData();
+
+    useEffect(() => {
+        if (files.length > 0) {
+          const newFilesMap = files.map(fileMap => {
+            formData.append("file", fileMap);
+          });
+           uploadPesonetFile(newFilesMap);
+        }
+      }, [files]);
+
+
+    const  uploadPesonetFile = (files)  => {
+        return axios.post('http://localhost:3030/api/v1/photos', files, {headers: { 'Content-Type': 'multipart/form-data' }})
+    }
+
     return (
       <div>
                 <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
@@ -23,29 +41,18 @@ export  const UploadModal = ({ open2, handleClose }) => {
                     open={open}
                     onClose={() => setOpen(false)}
                     onSave={(files) => {
-                    //   axios.defaults.baseURL = 'http://52.69.185.201:3030';
-                    //   axios.defaults.headers.common['Content-Type'] = 'application/json;charset=utf-8';
-                    //   axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-                      axios.get(`http://52.69.185.201:3030/api/v1/photos`)
-                        .then(res => {
-                         console.log(res.data);
-                        })
-                    console.log('Files:', files);
+                        setFiles(files);
+                    //   axios.get(`http://localhost:3030/api/v1/photos`)
+                    //     .then(res => {
+                    //      console.log(res.data);
+                    //     })
+                    // console.log('Files:', files);
+
                     setOpen(false);
                     }}
                     showPreviews={true}
                     showFileNamesInPreview={true}
                 />
-
-                {/* <Modal open={open2} onClose={handleClose}>
-                    <div className="modal__container">
-                        <div className="modal__body">
-                                Open !! Open !　! Open !! Open !!
-                                Open !! Open !　! Open !! Open !!　
-                                Open !! Open !　! Open !! Open !!
-                        </div>
-                    </div>
-                </Modal> */}
         </div>
 
     );
