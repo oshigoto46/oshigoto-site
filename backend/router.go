@@ -12,9 +12,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	//"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
-	// "database/sql"
+	"database/sql"
 	// "log"
-	// _ "github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"
 	// "github.com/kntkymt/discord_clone_server/server/model/db"
 	// "gopkg.in/gorp.v2"
 )
@@ -49,6 +49,28 @@ func Api(){
 	fmt.Print("\n === api end ====  \n");
 }
 
+type Database struct {
+    DATABASE       *sql.DB
+}
+
+func NewDatabase(user, password, host string) *Database {
+	db, err := sql.Open("mysql", user+":"+password+"@tcp("+host+":3307)/photos")
+	if err != nil {
+		panic(err.Error())
+	}
+	err = db.Ping()
+	if err != nil {
+		panic(err.Error())
+	}
+	_, err = db.Exec("CREATE DATABASE IF NOT EXISTS article;")
+	if err != nil {
+		panic(err)
+	}
+
+	Database := new(Database)
+	Database.DATABASE = db
+	return Database
+}
 
 func NewS3Store(bucket, region string) (*S3Store, error) {
 	s := new(S3Store)
@@ -89,6 +111,11 @@ func photosPost(writer http.ResponseWriter, request *http.Request){
 		
     }
 	
+	db := NewDatabase("root","P@ssw0rd","localhost")
+
+	if db == nil {
+	 	panic(err.Error())
+	}
 	//s  := Set("hoge",request.Body)
 	
 	// bucketName := "euromarriage-agency-2021-05-23"
