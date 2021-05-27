@@ -83,7 +83,7 @@ func photosPost(writer http.ResponseWriter, request *http.Request){
 
 	body, err := ioutil.ReadAll(request.Body)
 	newS3Store,err    := NewS3Store("euromarriage-agency-2021-05-23","ap-northeast-1")
-	newS3Store.Set("hoge", body)
+	newS3Store.Set("hoge.png", body)
 
 	if err != nil {
 		

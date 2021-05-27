@@ -16,15 +16,14 @@ export  const UploadModal = ({ open2, handleClose }) => {
 
     useEffect(() => {
         if (files.length > 0) {
-          const newFilesMap = files.map(fileMap => {
-            formData.append("file", fileMap);
-          });
-           uploadPesonetFile(newFilesMap);
+            for (var i in files) {
+                formData.append('images[]', files[i]);
+            }
+            uploadPesonetFile(formData);
         }
       }, [files]);
 
-
-    const  uploadPesonetFile = (files)  => {
+    const  uploadPesonetFile = async (files: FormData)  => {
         return axios.post('http://localhost:3030/api/v1/photos', files, {headers: { 'Content-Type': 'multipart/form-data' }})
     }
 
