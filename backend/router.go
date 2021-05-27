@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"github.com/go-chi/chi"
-	"fmt"
 	"github.com/go-chi/cors"
+	"launchpad.net/goamz/aws"
+	"launchpad.net/goamz/s3"
 )
 
 var Cors = cors.Handler(cors.Options{
@@ -30,6 +32,26 @@ func Api(){
 }
 
 func photos(writer http.ResponseWriter, request *http.Request){
+
+	bucketName := "euromarriage-agency-2021-05-23"
+	auth, err := aws.EnvAuth()
+	if err != nil {
+		panic(err.Error())
+	}
+		// Open Bucket
+	s := s3.New(auth, aws.APNortheast)
+	bucket := s.Bucket(bucketName)
+	
+	fmt.Print("=======\n")
+	fmt.Print(bucketName)
+	fmt.Print("=======\n")
+		
+	data := []byte("Hello, Goamz!!")
+	err = bucket.Put("sample2.txt", data, "text/plain", s3.BucketOwnerFull)
+	if err != nil {
+			panic(err.Error())
+	}
+
 	fmt.Print("\nphotos")
 }
 
