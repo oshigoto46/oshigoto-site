@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"local.packages/cors"
 	"net/http"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -143,5 +144,6 @@ func photosPost(writer http.ResponseWriter, request *http.Request){
 }
 
 func main(){
+	router.hoge()
 	Api()
 }
