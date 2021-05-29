@@ -12,6 +12,10 @@ export  const UploadModal = ({ open2, handleClose }) => {
     const [open, setOpen] = useState(false);
     const [files, setFiles] = useState([]as any);
 
+    const [state, setState] = useState(false);
+    //https://github.com/oshigoto46/oshigoto-site/issues/14
+    //もうすこしステートを細かくする　ステータスコード
+
     let formData = new FormData();
 
     useEffect(() => {
@@ -24,7 +28,18 @@ export  const UploadModal = ({ open2, handleClose }) => {
       }, [files]);
 
     const  uploadPesonetFile = async (files: FormData)  => {
-        return axios.post('http://localhost:3030/api/v1/photos', files, {headers: { 'Content-Type': 'multipart/form-data' }})
+        return axios.post('http://localhost:3030/api/v1/photos',
+              files, 
+              {  headers: { 'Content-Type': 'multipart/form-data' }
+              }
+        )
+        .then(
+            // https://github.com/oshigoto46/oshigoto-site/issues/14
+            // state管理とか書く、エラー画面表示
+         ).catch(
+            //https://github.com/oshigoto46/oshigoto-site/issues/14
+            // state管理とか書く、エラー画面表示
+         )
     }
 
     return (

@@ -11,6 +11,10 @@ export const Photos: React.FunctionComponent  = () => {
 		const fetchData = async () => {
 			const results = await axios.get(
 				"https://jsonplaceholder.typicode.com/photos"
+			).then(
+               // state管理とか書く、エラー画面表示
+			).catch(
+               // state管理とか書く、エラー画面表示
 			);
 			getPhotos(results.data);
 		};
