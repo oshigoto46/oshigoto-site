@@ -10,6 +10,8 @@ type PhotoController struct {}
 func (userController *PhotoController) HandlePhotoPostController(writer http.ResponseWriter, request *http.Request) {
 	
 	var body, bodyError = ioutil.ReadAll(request.Body)
+	//photoIdが送られてきている前提
+	var photoName, error = strconv.Atoi(chi.URLParam(request, "photoName"))
 	if bodyError != nil && bodyError != io.EOF {
 		//log.Print(bodyError)
 		http.Error(writer, "bad request. no body.", http.StatusBadRequest)
@@ -23,14 +25,14 @@ func (userController *PhotoController) HandlePhotoPostController(writer http.Res
 		http.Error(writer, "bad request. body json is invalid", http.StatusBadRequest)
 		return
 	}
-	
+
 // commit rollback的な何かを書く !!!!!
 // commit rollback的な何かを書く !!!!!
 // commit rollback的な何かを書く !!!!!
 // commit rollback的な何かを書く !!!!!
 // commit rollback的な何かを書く !!!!!
 
-	dao.AddPhotoDao(photoName,binaryData)
+	dao.AddPhotoDao(photoName,requestBody)
 
 }
 
