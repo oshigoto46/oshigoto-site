@@ -1,20 +1,21 @@
 package dao
 
 import(
-
 	"local.packages/db"
 	"local.packages/s3"
-
 )
 
 
 type Dao struct{
-	db *db
+	db db.Database
 	s3 s3.S3Store
 }
 
-func NewDao(){
-
+func (d *Dao) NewDao() Dao{
+	db := db.NewDatabase("root","P@ssw0rd","localhost")
+	if db == nil {
+	 	panic(err.Error())
+	}
 
 }
 
