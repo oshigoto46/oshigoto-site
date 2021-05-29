@@ -87,6 +87,8 @@ github.com/mwitkow/go-conntrack v0.0.0-20161129095857-cc309e4a2223/go.mod h1:qRW
 github.com/nelsam/hel/v2 v2.3.2 h1:tXRsJBqRxj4ISSPCrXhbqF8sT+BXA/UaIvjhYjP5Bhk=
 github.com/nelsam/hel/v2 v2.3.2/go.mod h1:1ZTGfU2PFTOd5mx22i5O0Lc2GY933lQ2wb/ggy+rL3w=
 github.com/oklog/ulid v1.3.1/go.mod h1:CirwcVhetQ6Lv90oh/F+FBtV6XMibvdAFo93nm5qn4U=
+github.com/oshigoto46/oshigoto-site v0.0.0-20210528174325-8220d56d2913 h1:tedqWXNlpiLi5x460MRtdEew5jUKebvzt+VAqmClvik=
+github.com/oshigoto46/oshigoto-site/backend v0.0.0-20210528174325-8220d56d2913 h1:M2pHOYE4aLHtjapw3noWKeGgUpHOEZtObEkmPD9HmsA=
 github.com/pelletier/go-toml v1.2.0/go.mod h1:5z9KED0ma1S8pY6P1sdut58dfprrGBbd/94hg7ilaic=
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
