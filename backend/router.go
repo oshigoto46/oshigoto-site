@@ -38,6 +38,9 @@ func photosPost(writer http.ResponseWriter, request *http.Request){
 	if db == nil {
 	 	panic(err.Error())
 	}
+	//クローズできたかな？？
+	db.Close()
+	fmt.Print("close ok?")
 }
 
 func main(){

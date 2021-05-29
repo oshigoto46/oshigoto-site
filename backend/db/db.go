@@ -28,3 +28,8 @@ func NewDatabase(user, password, host string) *Database {
 	Database.DATABASE = db
 	return Database
 }
+
+func (db *Database) Close() {
+//func (dbManager *DBManager) Close() {
+	db.DATABASE.Close()
+}
